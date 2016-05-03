@@ -28,7 +28,7 @@ issueType="Bug";
 issueId=0;
 
 # Read 
-rsstail -n 0 -alp -u "${redmine_url}/activity.atom?key=${redmine_key}" | while read line; 
+rsstail -i 300 -n 0 -alp -u "${redmine_url}/activity.atom?key=${redmine_key}" | while read line; 
 do 
     none="";
 	if [[ ${line} == "Title"* ]]
@@ -88,7 +88,7 @@ do
 	then
 	
 		# This ignores the gitlab-related data
-		if [[ ${title} != *"gitlab"* ]];
+		if [[ ${line} != *"gitlab"* ]];
 		then
 		
 	  		# Remove The "Author: " part 
